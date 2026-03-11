@@ -1,10 +1,11 @@
 from airflow.sdk import dag, task
-from aiflow.operators.bash import BashOperator
+# from airflow.operators.bash import BashOperator
+from airflow.providers.standard.operators.bash import BashOperator
 
 @dag(
-    dag_id="bash_dag"
+    dag_id="operators_dag"
 )
-def bash_dag():
+def operators_dag():
     
     @task.python
     def first_task():
@@ -31,4 +32,4 @@ def bash_dag():
     
     first >> second >> bash_modern >> bash_oldschool
     
-bash_dag()
+operators_dag()
